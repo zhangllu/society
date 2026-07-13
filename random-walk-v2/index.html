@@ -6,6 +6,25 @@
     <title>随机漫步的研究札记</title>
     <meta name="description" content="把正在想的、正在读的和想回去查的，留在这里。" />
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .paper-index { min-height: min(650px, calc(100vh - 76px)); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: end; gap: clamp(44px, 10vw, 150px); padding: clamp(92px, 12vw, 155px) 0 clamp(70px, 8vw, 110px); border-bottom: 1px solid var(--line); }
+      .paper-copy { max-width: 710px; }
+      .paper-copy h1 { margin: 0; font: 500 clamp(50px, 6vw, 80px)/1.18 var(--serif); letter-spacing: -.052em; }
+      .paper-copy > p:last-child { max-width: 530px; margin: 28px 0 0; color: var(--muted); font-size: 16px; }
+      .paper-entries { width: 100%; border-top: 1px solid var(--line); }
+      .paper-entries a { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; min-height: 72px; gap: 10px; border-bottom: 1px solid var(--line); transition: padding-left .18s, color .18s, border-color .18s; }
+      .paper-entries span { color: var(--accent); font-size: 12px; font-weight: 750; }
+      .paper-entries strong { font: 500 20px/1.3 var(--serif); }
+      .paper-entries em { color: var(--accent); font-size: 19px; font-style: normal; }
+      .paper-entries a:hover { padding-left: 8px; color: var(--accent); border-color: var(--accent); }
+      .home-glimpse { padding: 34px 0 76px; }
+      .home-glimpse .index-mark { margin-bottom: 11px; }
+      .home-glimpse a { display: grid; grid-template-columns: 106px 1fr auto; gap: 20px; align-items: baseline; max-width: 800px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .home-glimpse time { color: var(--muted); font-size: 13px; }
+      .home-glimpse strong { font: 500 19px/1.35 var(--serif); }
+      .home-glimpse span { color: var(--accent); }
+      @media (max-width: 700px) { .paper-index { display: block; min-height: 0; padding: 78px 0 70px; } .paper-copy h1 { font-size: 49px; } .paper-copy > p:last-child { margin-top: 24px; } .paper-entries { margin-top: 52px; } .paper-entries a { min-height: 64px; } .home-glimpse { padding: 28px 0 56px; } .home-glimpse a { grid-template-columns: 1fr auto; gap: 8px; } .home-glimpse time { grid-column: 1 / -1; } }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -13,27 +32,21 @@
       <nav aria-label="主导航"><a href="./thoughts.html">近期思考</a><a href="./thinkers.html">智者</a><a href="./resources.html">相关链接</a></nav>
     </header>
     <main>
-      <section class="intro">
+      <section class="paper-index">
+        <div class="paper-copy">
         <p class="index-mark">RESEARCH NOTES / 001</p>
         <h1>把正在想的、正在读的，<br />留成可以继续走进去的路。</h1>
         <p>这是一个为我自己的阅读、思考与 coding 留下的工作台。它不按学科展开，而从此刻真实的兴趣、人物和材料开始。</p>
+        </div>
+        <nav class="paper-entries" aria-label="三个入口">
+          <a href="./thoughts.html"><span>01</span><strong>近期思考</strong><em>→</em></a>
+          <a href="./thinkers.html"><span>02</span><strong>智者</strong><em>→</em></a>
+          <a href="./resources.html"><span>03</span><strong>相关链接</strong><em>→</em></a>
+        </nav>
       </section>
-      <section class="entry-grid" aria-label="三个入口">
-        <a class="entry entry--thought" href="./thoughts.html">
-          <span>01</span><h2>近期思考</h2>
-          <p>一份可编辑、可下载的 Markdown。写下正在形成的理解，也保留没有答案的问题。</p>
-          <b>打开思考页 <i>→</i></b>
-        </a>
-        <a class="entry" href="./thinkers.html">
-          <span>02</span><h2>智者</h2>
-          <p>从一个人的问题、材料、判断与对话关系进入阅读；不把他读成几个已经分类好的名词。</p>
-          <b>进入人物阅读 <i>→</i></b>
-        </a>
-        <a class="entry" href="./resources.html">
-          <span>03</span><h2>相关链接</h2>
-          <p>网页资料、本地文件夹、Zed 项目和页面之间的快捷入口，让材料能被重新找回。</p>
-          <b>打开资源索引 <i>→</i></b>
-        </a>
+      <section class="home-glimpse" aria-label="最近写下">
+        <p class="index-mark">最近写下</p>
+        <a href="./thoughts.html"><time>2026.07.13</time><strong>从“理解社会”到“随机漫步”</strong><span>→</span></a>
       </section>
     </main>
     <footer>随机漫步的研究札记 · 一个仍在生长的个人学习现场</footer>
