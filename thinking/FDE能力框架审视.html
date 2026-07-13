@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用 FDE 能力框架审视这个项目 | 设计手记</title>
+    <meta name="description" content="把 FDE 的 4C 模型、七步法、八维能力模型一一映射到这个项目，看看哪些已做到、哪些需要补。" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .article-body { max-width: 700px; margin: 0 auto; }
+      .article-body h2 { font-size: 28px; margin-top: 40px; }
+      .article-body h3 { font-family: var(--font-sans); font-size: 18px; font-weight: 650; margin-top: 28px; }
+      .article-body p { font-size: 16px; line-height: 1.9; color: var(--ink); margin: 14px 0; }
+      .article-body blockquote {
+        margin: 20px 0; padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: var(--accent-subtle);
+        font-family: "Kaiti SC", "楷体", STKaiti, serif;
+        font-size: 16px; color: var(--ink);
+        border-radius: 0 6px 6px 0;
+      }
+      .article-body blockquote p { margin: 0; color: var(--ink); }
+      .article-body ul { padding-left: 20px; }
+      .article-body ul li { margin: 6px 0; font-size: 16px; line-height: 1.8; }
+      .article-body table {
+        width: 100%; border-collapse: collapse;
+        font-size: 14px; line-height: 1.6;
+        margin: 20px 0;
+      }
+      .article-body th, .article-body td {
+        padding: 10px 12px; border: 1px solid var(--line);
+        text-align: left; vertical-align: top;
+      }
+      .article-body th { background: var(--warm-bg); font-weight: 700; font-size: 13px; }
+      .article-body .tag-done { color: #22c55e; font-weight: 600; }
+      .article-body .tag-wip { color: var(--accent); font-weight: 600; }
+      .article-body .tag-none { color: var(--muted); font-weight: 600; }
+      .article-body .highlight-box {
+        padding: 20px 24px; margin: 24px 0;
+        border-radius: 8px; background: var(--warm-bg);
+        border: 1px solid var(--line);
+      }
+      .article-body .highlight-box h4 { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--accent); }
+      .article-body .highlight-box p { margin: 0; font-size: 15px; }
+      .article-body .radar { font-family: monospace; font-size: 14px; line-height: 1.8; margin: 20px 0; padding: 16px 20px; background: var(--warm-bg); border-radius: 8px; white-space: pre-wrap; }
+      .article-meta {
+        margin-bottom: 32px; padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted); font-size: 13px;
+      }
+      .article-meta span { color: var(--accent); font-weight: 600; }
+      .article-nav {
+        margin-top: 48px; padding-top: 24px;
+        border-top: 1px solid var(--line);
+        display: flex; justify-content: space-between;
+        font-size: 14px;
+      }
+      .article-nav a { color: var(--accent); font-weight: 600; text-decoration: none; }
+      .article-nav a:hover { opacity: 0.7; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">如何理解社会</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="../index.html">首页</a>
+        <a href="../index.html#thinkers">智者</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../thinking.html">设计手记</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" style="min-height: auto; padding-bottom: clamp(40px, 7vw, 78px);">
+        <div class="hero-copy">
+          <p style="margin: 0 0 8px; color: var(--accent); font-size: 12px; font-weight: 700;">能力模型 · 2026-07-03</p>
+          <h1 style="font-size: 48px;">用 FDE 能力框架审视这个项目</h1>
+          <p class="hero-lead" style="max-width: 600px;">把 FDE 的 4C 模型、七步法、八维能力模型一一映射到这个项目，看看哪些已做到、哪些需要补。</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0;">
+        <div class="article-body">
+
+          <p>前不久在一次分享中系统了解了 FDE（Frontline Deployment Engineer）这个角色。本以为是跟自己无关的岗位分析，但越听越发现——FDE 的能力模型恰好可以映射到这个项目上。</p>
+
+          <p>FDE 的核心是把 AI 能力部署进真实组织。我这个项目的核心是把智者的认知能力部署进普通人的日常思维。本质都是"部署"，只是部署的内容不同。</p>
+
+          <p>所以干脆把 FDE 的几套框架——4C 模型、七步法、八维能力——逐一对照这个项目，看看自己哪些已做到、哪些要补、哪些必须有真实用户才能长出来。</p>
+
+          <h2>4C 模型对照</h2>
+
+          <h3>C1：Context（现场情境）</h3>
+          <p>FDE 强调"进现场"，理解业务流程、数据、权限、角色。映射到此项目：</p>
+          <ul>
+            <li><strong>理解用户的"现场"</strong>：六个生活入口（规则/金钱/权力/关系/判断/文化）不是学术分类，而是从普通人的日常困惑进入。✅</li>
+            <li><strong>情境构建</strong>：网站本质是一个"借眼思考"的情境——用户带着困惑来，选择入口，借智者视角看问题。但目前的页面交互还没有充分把这个理念落地。⚠️</li>
+          </ul>
+
+          <h3>C2：Code（代码工程）</h3>
+          <ul>
+            <li><strong>技术实现</strong>：纯静态 HTML/CSS，6 个页面 + Vercel 部署，独立交付全流程。✅</li>
+            <li><strong>数据架构</strong>：content-model 设计（Entry/Thinker/Way/Work/Concept）清晰可扩展。✅</li>
+            <li><strong>数据驱动</strong>：从硬编码 HTML 到数据驱动渲染——这一步还没做。❌</li>
+          </ul>
+
+          <h3>C3：Calibration（持续校准）</h3>
+          <ul>
+            <li><strong>内容质量评估</strong>：如何判断一位智者的页面是否准确、有用？目前没有机制。❌</li>
+            <li><strong>用户理解校验</strong>：读者是否真的"借到了眼睛"？没有反馈渠道。❌</li>
+          </ul>
+
+          <h3>C4：反哺文化</h3>
+          <ul>
+            <li><strong>知识资产化</strong>：概念索引、content-model、认知方式分类——正在建立。✅</li>
+            <li><strong>反哺迭代</strong>：设计了闭环（读书→更新→校准），但还没形成稳定节奏。⚠️</li>
+          </ul>
+
+          <h2>七步法对照</h2>
+          <p>分享者将 FDE 工作流程提炼为七步：</p>
+          <ul>
+            <li><strong>发现</strong>：理解学习者的真实困惑，设计六个生活入口。✅</li>
+            <li><strong>架构</strong>：content-model、10 段旅程、四种组织方式。✅</li>
+            <li><strong>构建</strong>：完成 6 个页面 + SKILL.md 技能包。✅</li>
+            <li><strong>循环度量</strong>：缺用户反馈，没有评估机制。❌</li>
+            <li><strong>解决问题</strong>：修改概念不一致、补充盲区——被动进行。⚠️</li>
+            <li><strong>复用</strong>：SKILL.md 格式、content-model、概念索引已可复用。✅</li>
+            <li><strong>反哺场景</strong>：每次内容更新反哺到网站，有设计但未稳定。⚠️</li>
+          </ul>
+
+          <h2>八维能力模型</h2>
+          <p>Open FDE 定义了八项核心能力。这是分享者强调的"最小能力模型"：</p>
+
+          <table>
+            <tr><th>能力维度</th><th>项目体现</th><th>等级</th></tr>
+            <tr><td>AI/ML 工程</td><td>人类框架 + AI 执行的内容生成模式</td><td class="tag-wip">中级</td></tr>
+            <tr><td>软件工程</td><td>纯静态网站全流程交付</td><td class="tag-done">高级</td></tr>
+            <tr><td>数据工程</td><td>概念索引、content-model、数据治理</td><td class="tag-wip">中级</td></tr>
+            <tr><td>产品/UX</td><td>生活入口设计、10 段旅程、四种组织方式</td><td class="tag-done">高级</td></tr>
+            <tr><td>业务分析</td><td>从"理解社会"拆解为问题域→智者→认知方式</td><td class="tag-done">高级</td></tr>
+            <tr><td>项目管理</td><td>42 天冲刺设计已有，但未正式执行</td><td class="tag-none">基础</td></tr>
+            <tr><td>沟通协作</td><td>设计手记在练叙事，缺外部交流</td><td class="tag-wip">中级</td></tr>
+            <tr><td>领域专家</td><td>社会学知识体系设计、智者选择与定位</td><td class="tag-done">高级</td></tr>
+          </table>
+
+          <p>能力雷达图大概是这样的：</p>
+
+          <div class="radar">
+AI/ML 工程     ████▎  4
+软件工程       █████  5
+数据工程       ████   4
+产品/UX        █████  5
+业务分析       █████  5
+项目管理       ██▎    2
+沟通协作       ███    3
+领域专家       █████  5
+          </div>
+
+          <p><strong>强势区</strong>：软件工程、产品/UX、业务分析、领域专家——这四项已有 FDE 水平。</p>
+          <p><strong>薄弱区</strong>：项目管理——缺节奏；沟通协作——缺外部验证。</p>
+
+          <h2>需要真实用户才能长的能力</h2>
+
+          <p>不是所有能力都能靠自己练。以下必须用手用户反馈才能长出来：</p>
+
+          <table>
+            <tr><th>能力</th><th>为什么需要用户</th><th>最小验证方法</th></tr>
+            <tr><td>需求验证</td><td>六个生活入口真的对吗？</td><td>找 3 人各花 15 分钟看首页，问"你会点哪个？"</td></tr>
+            <tr><td>交付评估</td><td>用户读完真的"借到了眼睛"吗？</td><td>让人读完用自己话复述韦伯的核心视角</td></tr>
+            <tr><td>价值证明</td><td>这个网站帮人理解社会了吗？</td><td>收集使用前后的认知对比</td></tr>
+            <tr><td>需求诊断</td><td>有人带着问题来，你能指路吗？</td><td>让朋友问一个社会困惑，你从网站给他指路</td></tr>
+            <tr><td>持续运营</td><td>内容更新频率能保持吗？</td><td>公开承诺 42 天一位智者，跑完第一个 sprint</td></tr>
+          </table>
+
+          <h2>一个判断</h2>
+
+          <div class="highlight-box">
+            <h4>当前阶段：FDE 的"架构师阶段"</h4>
+            <p>框架设计能力（产品/UX + 业务分析 + 领域专家）远超平均水平，但缺少真实用户的反馈循环来校准框架是否有用。下一步不是学更多，而是找一个真实的人，让他用一次你的网站，然后闭嘴听他说。</p>
+          </div>
+
+          <p>这个对照本身也是 FDE "业务分析"能力的体现——把一个模糊的"能力"概念拆解成可对照、可评估的维度。框架设计能力是相通的，可以跨领域迁移。</p>
+
+        </div>
+
+        <div class="article-nav">
+          <a href="./人类框架-AI执行.html">← 上一篇：人类框架 + AI 执行</a>
+          <a href="../thinking.html">回到设计手记 →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>借智者之眼，理解社会。</p>
+      <a href="../thinking.html">设计手记</a>
+      <a href="../index.html">回到首页</a>
+    </footer>
+  </body>
+</html>

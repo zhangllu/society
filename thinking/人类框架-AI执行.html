@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>人类框架 + AI 执行 | 设计手记</title>
+    <meta name="description" content="这个项目的设计方式——人类定义怎么看，AI 负责看，人类判断看到了什么。" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .article-body { max-width: 700px; margin: 0 auto; }
+      .article-body h2 { font-size: 28px; margin-top: 40px; }
+      .article-body h3 { font-family: var(--font-sans); font-size: 18px; font-weight: 650; margin-top: 28px; }
+      .article-body p { font-size: 16px; line-height: 1.9; color: var(--ink); margin: 14px 0; }
+      .article-body blockquote {
+        margin: 20px 0; padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: var(--accent-subtle);
+        font-family: "Kaiti SC", "楷体", STKaiti, serif;
+        font-size: 16px; color: var(--ink);
+        border-radius: 0 6px 6px 0;
+      }
+      .article-body blockquote p { margin: 0; color: var(--ink); }
+      .article-body ul { padding-left: 20px; }
+      .article-body ul li { margin: 6px 0; font-size: 16px; line-height: 1.8; }
+      .article-body .highlight-box {
+        padding: 20px 24px; margin: 24px 0;
+        border-radius: 8px; background: var(--warm-bg);
+        border: 1px solid var(--line);
+      }
+      .article-body .highlight-box h4 { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--accent); }
+      .article-body .highlight-box p { margin: 0; font-size: 15px; }
+      .article-meta {
+        margin-bottom: 32px; padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted); font-size: 13px;
+      }
+      .article-meta span { color: var(--accent); font-weight: 600; }
+      .article-nav {
+        margin-top: 48px; padding-top: 24px;
+        border-top: 1px solid var(--line);
+        display: flex; justify-content: space-between;
+        font-size: 14px;
+      }
+      .article-nav a { color: var(--accent); font-weight: 600; text-decoration: none; }
+      .article-nav a:hover { opacity: 0.7; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">如何理解社会</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="../index.html">首页</a>
+        <a href="../index.html#thinkers">智者</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../thinking.html">设计手记</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" style="min-height: auto; padding-bottom: clamp(40px, 7vw, 78px);">
+        <div class="hero-copy">
+          <p style="margin: 0 0 8px; color: var(--accent); font-size: 12px; font-weight: 700;">设计方法 · 2026-07-03</p>
+          <h1 style="font-size: 48px;">人类框架 + AI 执行</h1>
+          <p class="hero-lead" style="max-width: 600px;">这个项目的设计方式——人类定义怎么看，AI 负责看，人类判断看到了什么。</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0;">
+        <div class="article-body">
+
+          <p>这个项目最初的想法很简单：把智者理解社会的方式呈现给普通人，让他们也能借用这些眼睛。</p>
+
+          <p>但做着做着，一个问题浮现了——在这个过程里，我（人类）应该做什么？AI 应该做什么？</p>
+
+          <h2>最初的模式：纯手工</h2>
+
+          <p>一开始我的思路是传统的手工模式：</p>
+
+          <ul>
+            <li>选一位智者 → 读他的书 → 写他的页面 → 设计页面 → 上线</li>
+          </ul>
+
+          <p>这样做完韦伯页之后，我算了算——如果要完成 60 位智者，按这个速度需要好几年。而且大部分时间花在了"组织文字"和"排版呈现"上，而不是花在"理解"上。</p>
+
+          <p>这不对。我是一个学习者，不是写手。</p>
+
+          <h2>转折：发现 AI 能做的不只是"回答"</h2>
+
+          <p>我在一次 FDE（前线部署工程师）的分享中听到了一个概念：把前沿 AI 能力部署进真实组织。</p>
+
+          <p>映射到我的项目里，就是：<strong>把智者的认知能力，部署进普通人的日常思维。</strong></p>
+
+          <p>这改变了我对 AI 的用法。之前我把它当搜索引擎用——问它"韦伯是谁"，它回答。后来我发现，它可以做得更多：</p>
+
+          <ul>
+            <li>给它一个框架（"按 10 段旅程结构生成韦伯页初稿"），它能执行</li>
+            <li>给它一批数据（"60 位智者的基础信息"），它能按任意维度呈现</li>
+            <li>给它一个标准（"找出不太为人知但认知方式独特的智者"），它能筛选</li>
+          </ul>
+
+          <h2>新的分工方式</h2>
+
+          <p>于是项目变成这个模式：</p>
+
+          <div class="highlight-box">
+            <h4>人类握住的</h4>
+            <p>选谁、为什么选、一句话定位、什么算有趣、什么值得展开、什么迁移案例是好的——这些都是品味判断，AI 做不了。</p>
+          </div>
+
+          <div class="highlight-box" style="margin-top: 12px;">
+            <h4>AI 执行的</h4>
+            <p>按框架生成初稿、跨数据筛选和聚类、多视角呈现、保持全站一致性——这些是执行工作，人类不该重复做。</p>
+          </div>
+
+          <p>这个分工的直接成果是 <strong>thinkers.html</strong>——60 位智者全景页。我准备好了 60 位智者的基础数据，定义了呈现方式（精选集 + 筛选 + 学习路径），AI 完成了所有的渲染和组织。</p>
+
+          <blockquote>
+            <p>AI 时代的学习者，不再是知识的消费者，而是认知框架的设计者。</p>
+          </blockquote>
+
+          <h2>对内容创作的影响</h2>
+
+          <p>这个分工也改变了"写什么"的决策：</p>
+
+          <ul>
+            <li><strong>以前我写</strong>：智者页的全部文字 → 我花大量时间措辞</li>
+            <li><strong>现在我做</strong>：定义定位、写关键判断、选案例、校准 AI 的输出 → 我花时间理解</li>
+            <li><strong>AI 做</strong>：按框架生成初稿、扩展案例选项、保持风格一致 → AI 花时间执行</li>
+          </ul>
+
+          <p>结果是，我从一个"作者"变成了"编辑+策展人"。创作量没有减少，但创作的性质变了——更多的是判断和选择，而不是书写。</p>
+
+          <h2>对学习方式的影响</h2>
+
+          <p>因为我本身就是这个项目的学习者，这个模式对我的学习意味着：</p>
+
+          <ul>
+            <li>我不用先学完再产出，而是<strong>为了产出而学</strong></li>
+            <li>我读的目的变了——不是为了"记住"，而是为了决定 AI 写对了没有</li>
+            <li>修订 AI 的输出，是最深的学习。因为你必须真的理解了，才能判断它哪里不对</li>
+          </ul>
+
+          <div class="highlight-box">
+            <h4>一个例子</h4>
+            <p>AI 生成费孝通的"一句话定位"时写的是"一双理解传统文化的眼睛"。我读后觉得不对——费孝通的贡献不是理解传统文化，而是理解中国社会的结构（差序格局、熟人社会）。这个判断来自我读过《乡土中国》，它储存在我的大脑里，AI 不知道我心中的那个标准。修订完这句话，我比之前更清楚费孝通独特在哪里。</p>
+          </div>
+
+          <h2>这个模式适合什么</h2>
+
+          <p>不是所有项目都适合这个模式。它成立的前提是：</p>
+
+          <ul>
+            <li><strong>你有明确的框架</strong>——content-model、10 段旅程、四种组织方式</li>
+            <li><strong>你有判断标准</strong>——你知道什么是好的、什么是不对的</li>
+            <li><strong>你有材料基础</strong>——60 位智者的数据、概念索引、认知方式分类</li>
+            <li><strong>你享受修订</strong>——生成初稿不是终点，只是起点</li>
+          </ul>
+
+          <p>如果上面四条你都满足，AI 可以让你的项目速度快 5-10 倍。</p>
+
+          <h2>下一步</h2>
+
+          <p>这个模式还在演化中。下一个尝试是：让 AI 根据已有的智者数据，自动发现"同一种认知方式的不同智者"之间的模式和差异，然后我再来判断这些发现中哪些值得呈现。</p>
+
+          <p>本质上，是在训练自己问更好的问题。</p>
+
+        </div>
+
+        <div class="article-nav">
+          <span></span>
+          <a href="../thinking.html">← 回到设计手记</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>借智者之眼，理解社会。</p>
+      <a href="../thinking.html">设计手记</a>
+      <a href="../index.html">回到首页</a>
+    </footer>
+  </body>
+</html>
