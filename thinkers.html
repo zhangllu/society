@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智者图谱 | 借智者之眼</title>
+    <meta
+      name="description"
+      content="精选 10 位社会学大师——每人一个独一无二的角度。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html">如何理解社会</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="./index.html">首页</a>
+        <a href="./knowledge.html">知识库</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero cog-hero">
+        <div class="hero-copy">
+          <h1>智者图谱</h1>
+          <p class="hero-lead">
+            10 位社会学大师，每人一个独一无二的角度。选一个你最好奇的。
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="feature-grid" id="featureGrid"></div>
+      </section>
+    </main>
+
+    <!-- Overlay -->
+    <div class="overlay-bg" id="overlayBg"></div>
+    <div class="overlay-panel" id="overlayPanel" style="display: none;">
+      <button class="overlay-close" id="overlayClose">&times;</button>
+      <div id="overlayContent"></div>
+    </div>
+
+    <script src="./thinkers-data.js"></script>
+    <script>
+      var thinkerMap = {};
+      thinkers.forEach(function (t) { thinkerMap[t.id] = t; });
+
+      // 有头像的智者
+      var hasPortrait = { weber: true, durkheim: true, simmel: true, bourdieu: true, goffman: true, foucault: true, bauman: true, comte: true, elias: true };
+
+      // 背景色池（给无头像的用）
+      var bgColors = [
+        '#e8f0fe', '#fce8e6', '#e6f4ea', '#fef7e0',
+        '#f3e8fd', '#e0f2f1', '#fbe9e7', '#e8eaf6', '#fff3e0'
+      ];
+
+      function getInitial(name) {
+        return name.charAt(0);
+      }
+
+      function renderFeatures() {
+        var html = '';
+        features.forEach(function (f, idx) {
+          var t = thinkerMap[f.id];
+          if (!t) return;
+          var portraitHtml = '';
+          if (hasPortrait[f.id]) {
+            portraitHtml = '<img src="./assets/portrait-' + f.id + '.jpg" alt="' + t.name + '肖像" loading="lazy" />';
+          } else {
+            portraitHtml = '<div class="fc-initial" style="background:' + bgColors[idx % bgColors.length] + ';color:var(--accent);">' + getInitial(t.name) + '</div>';
+          }
+          html += '<div class="feature-card" data-id="' + f.id + '">';
+          html += '<div class="fc-portrait">' + portraitHtml + '</div>';
+          html += '<div class="fc-body">';
+          html += '<div class="fc-tag">' + f.tag + '</div>';
+          html += '<div class="fc-name">' + t.name + '</div>';
+          html += '<div class="fc-tease">' + f.tease + '</div>';
+          html += '</div></div>';
+        });
+        document.getElementById('featureGrid').innerHTML = html;
+        document.getElementById('featureGrid').querySelectorAll('.feature-card').forEach(function (card) {
+          card.addEventListener('click', function () { openOverlay(this.dataset.id); });
+        });
+      }
+
+      // ----- Overlay -----
+      function openOverlay(id) {
+        var t = thinkerMap[id];
+        if (!t) return;
+        var eraMap = { '古典': '古典（19世纪前）', '现代': '现代（20世纪）', '当代': '当代（21世纪活跃）' };
+        var html = '';
+        html += '<div class="ol-era">' + (eraMap[t.era] || t.era) + ' · ' + t.region + '</div>';
+        html += '<div class="ol-name">' + t.name + ' <small>' + t.nameEn + '</small></div>';
+        html += '<div class="ol-life">' + t.lifespan + ' · ' + t.fields.join('、') + '</div>';
+        html += '<div style="font-size:15px;line-height:1.6;color:var(--ink);font-family:var(--font-serif);margin-bottom:12px;">' + t.oneLine + '</div>';
+
+        if (t.coreContribution) {
+          html += '<div class="ol-section"><h4>核心贡献</h4><p>' + t.coreContribution + '</p></div>';
+        }
+        html += '<div class="ol-section"><h4>关键概念</h4><div class="ol-concepts">';
+        t.concepts.forEach(function (c) { html += '<span>' + c + '</span>'; });
+        html += '</div></div>';
+        html += '<div class="ol-section"><h4>代表作品</h4><p style="font-size:14px;">' + t.works.join('、') + '</p></div>';
+        html += '<div class="ol-section"><h4>认知方式</h4><p style="font-size:14px;">' + t.cognitiveWays.join('、') + '</p></div>';
+
+        if (t.related && t.related.length) {
+          html += '<div class="ol-section"><h4>关联智者</h4><div class="ol-related">';
+          t.related.forEach(function (r) {
+            var rName = thinkerMap[r.id] ? thinkerMap[r.id].name : r.id;
+            html += '<a data-id="' + r.id + '">' + rName + '<span style="color:var(--muted);margin-left:3px;">(' + r.label + ')</span></a>';
+          });
+          html += '</div></div>';
+        }
+        if (t.hasDetail && t.detailPage) {
+          html += '<a href="' + t.detailPage + '" class="ol-detail-link">查看深度页 →</a>';
+        }
+        document.getElementById('overlayContent').innerHTML = html;
+        document.getElementById('overlayPanel').style.display = 'block';
+        document.getElementById('overlayBg').classList.add('open');
+        document.querySelectorAll('.ol-related a').forEach(function (a) {
+          a.addEventListener('click', function () { openOverlay(this.dataset.id); });
+        });
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeOverlay() {
+        document.getElementById('overlayPanel').style.display = 'none';
+        document.getElementById('overlayBg').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('overlayClose').addEventListener('click', closeOverlay);
+      document.getElementById('overlayBg').addEventListener('click', closeOverlay);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeOverlay(); });
+
+      // ----- Init -----
+      renderFeatures();
+    </script>
+
+    <footer class="site-footer">
+      <p>借智者之眼，理解社会。</p>
+      <a href="./knowledge.html">回到知识库</a>
+    </footer>
+  </body>
+</html>
