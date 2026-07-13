@@ -127,6 +127,71 @@ a {
   animation: fade-up 0.8s ease-out 0.2s both;
 }
 
+/* 首页不是一张居中的卡片，而是一段向下展开的阅读入口。 */
+.home-hero {
+  width: 100%;
+  min-height: min(680px, calc(100vh - 58px));
+  padding: clamp(96px, 13vw, 168px) max(36px, calc((100% - var(--max)) / 2));
+  background:
+    radial-gradient(ellipse 58% 70% at 6% 74%, rgba(15, 118, 110, 0.16) 0%, transparent 68%),
+    radial-gradient(ellipse 45% 58% at 90% 22%, rgba(82, 169, 151, 0.17) 0%, transparent 70%),
+    linear-gradient(124deg, #edf8f4 0%, #f9fcfb 45%, #e5f3ee 100%);
+}
+
+.home-hero::before,
+.home-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+.home-hero::before {
+  width: min(58vw, 820px);
+  height: min(58vw, 820px);
+  top: -34%;
+  left: -14%;
+  background: radial-gradient(circle, rgba(175, 225, 212, 0.64) 0%, rgba(218, 241, 233, 0.2) 47%, transparent 71%);
+  animation: hero-drift-one 16s ease-in-out infinite alternate;
+}
+
+.home-hero::after {
+  width: min(48vw, 680px);
+  height: min(48vw, 680px);
+  right: -11%;
+  bottom: -42%;
+  background: radial-gradient(circle, rgba(91, 173, 153, 0.28) 0%, rgba(202, 234, 223, 0.18) 49%, transparent 72%);
+  animation: hero-drift-two 19s ease-in-out infinite alternate;
+}
+
+.home-hero .hero-copy {
+  max-width: 840px;
+}
+
+.home-hero .hero-lead {
+  max-width: 650px;
+  color: #236c62;
+}
+
+@keyframes hero-drift-one {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(12%, 8%, 0) scale(1.12); }
+}
+
+@keyframes hero-drift-two {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-14%, -10%, 0) scale(1.14); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero::before,
+  .home-hero::after {
+    animation: none;
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -1334,6 +1399,11 @@ h3 {
   .section,
   .site-footer {
     width: min(100% - 28px, var(--max));
+  }
+
+  .home-hero {
+    width: 100%;
+    padding: 92px 28px 104px;
   }
 
   h1 {
