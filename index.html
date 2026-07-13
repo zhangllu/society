@@ -3,151 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>借智者之眼，理解社会</title>
-    <meta
-      name="description"
-      content="借智者之眼，理解社会。通过智者的认知方式，看见你身处的社会。"
-    />
-    <link rel="stylesheet" href="./styles.css" />
+    <title>随机漫步的研究札记</title>
+    <meta name="description" content="把正在想的、正在读的和想回去查的，留在这里。" />
+    <link rel="stylesheet" href="./random-walk-v2/styles.css" />
+    <style>
+      .paper-index { min-height: min(590px, calc(100vh - 76px)); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: center; gap: clamp(44px, 10vw, 150px); padding: clamp(88px, 10vw, 132px) 0; border-bottom: 1px solid var(--line); }
+      .paper-copy { max-width: 710px; }
+      .paper-copy h1 { margin: 0; color: #1b4942; font: 400 clamp(32px, 3.3vw, 46px)/1.55 var(--serif); letter-spacing: .018em; }
+      .paper-copy h1 span { display: block; }
+      .paper-entries { width: 100%; border-top: 1px solid var(--line); }
+      .paper-entries a { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; min-height: 72px; gap: 10px; border-bottom: 1px solid var(--line); transition: padding-left .18s, color .18s, border-color .18s; }
+      .paper-entries span { color: var(--accent); font-size: 12px; font-weight: 750; }
+      .paper-entries strong { font: 500 20px/1.3 var(--serif); }
+      .paper-entries em { color: var(--accent); font-size: 19px; font-style: normal; }
+      .paper-entries a:hover { padding-left: 8px; color: var(--accent); border-color: var(--accent); }
+      .home-glimpse { padding: 34px 0 76px; }
+      .home-glimpse .index-mark { margin-bottom: 11px; }
+      .home-glimpse a { display: grid; grid-template-columns: 106px 1fr auto; gap: 20px; align-items: baseline; max-width: 800px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .home-glimpse time { color: var(--muted); font-size: 13px; }
+      .home-glimpse strong { font: 500 19px/1.35 var(--serif); }
+      .home-glimpse span { color: var(--accent); }
+      @media (max-width: 700px) { .paper-index { display: block; min-height: 0; padding: 78px 0 70px; } .paper-copy h1 { font-size: 32px; line-height: 1.62; } .paper-entries { margin-top: 52px; } .paper-entries a { min-height: 64px; } .home-glimpse { padding: 28px 0 56px; } .home-glimpse a { grid-template-columns: 1fr auto; gap: 8px; } .home-glimpse time { grid-column: 1 / -1; } }
+    </style>
   </head>
-  <body class="home-page">
+  <body>
     <header class="site-header">
-      <a class="brand" href="#top">如何理解社会</a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#puzzles">困惑</a>
-        <a href="#support">方式</a>
-        <a href="#thinkers">智者</a>
-        <a href="./knowledge.html">知识库</a>
-        <a href="./thinking.html">设计手记</a>
-      </nav>
+      <a class="brand" href="./index.html">随机漫步的研究札记</a>
+      <nav aria-label="主导航"><a href="./random-walk-v2/thoughts.html">近期思考</a><a href="./random-walk-v2/thinkers.html">智者</a><a href="./random-walk-v2/resources.html">相关链接</a></nav>
     </header>
-
-    <main id="top">
-      <section class="hero home-hero">
-        <div class="home-hero-copy">
-          <p class="home-index">社会理解 / 001</p>
-          <h1>借智者之眼，<br />理解社会</h1>
-          <p class="home-intro">
-            个人理解社会，常常被自己的经验限制。这里不急着灌输结论，而是回到智者如何提问、寻找材料，并形成判断。
-          </p>
+    <main>
+      <section class="paper-index">
+        <div class="paper-copy">
+        <h1><span>把正在想的、正在读的，</span><span>留成可以继续走进去的路。</span></h1>
         </div>
-        <nav class="home-index-list" aria-label="阅读入口">
-          <a href="#puzzles"><span>01</span><strong>从你的困惑开始</strong><em>→</em></a>
-          <a href="#thinkers"><span>02</span><strong>看智者如何思考</strong><em>→</em></a>
-          <a href="#support"><span>03</span><strong>慢慢形成自己的眼睛</strong><em>→</em></a>
+        <nav class="paper-entries" aria-label="三个入口">
+          <a href="./random-walk-v2/thoughts.html"><span>01</span><strong>近期思考</strong><em>→</em></a>
+          <a href="./random-walk-v2/thinkers.html"><span>02</span><strong>学习智者</strong><em>→</em></a>
+          <a href="./random-walk-v2/resources.html"><span>03</span><strong>相关链接</strong><em>→</em></a>
         </nav>
       </section>
-
-      <section id="puzzles" class="section">
-        <div class="section-head row-head">
-          <div>
-            <h2>身处社会，你是否有这些困惑？</h2>
-          </div>
-          <a class="text-link" href="#thinkers">查看智者</a>
-        </div>
-
-        <div class="article-list">
-          <a href="./weber.html">
-            <div>
-              <p>韦伯 · 规则与组织</p>
-              <h3>为什么很多流程明明低效，却仍然很难改变？</h3>
-            </div>
-            <span>进入</span>
-          </a>
-          <a href="./thinkers.html">
-            <div>
-              <p>涂尔干 · 失范与团结</p>
-              <h3>为什么越自由，反而越容易迷茫？</h3>
-            </div>
-            <span>进入</span>
-          </a>
-          <a href="./thinkers.html">
-            <div>
-              <p>齐美尔 · 都市与心灵</p>
-              <h3>为什么城市越大，人越孤独？</h3>
-            </div>
-            <span>进入</span>
-          </a>
-        </div>
-      </section>
-
-      <section id="support" class="section section-warm">
-        <div class="section-head">
-          <h2>在这里，你可以这样理解社会</h2>
-        </div>
-
-        <div class="benefit-grid">
-          <article>
-            <span>01</span>
-            <h3>从真实问题进入</h3>
-            <p>从流程、关系、机会、选择这些日常困惑开始，而不是从学术名词开始。</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>看见智者怎么想</h3>
-            <p>呈现他们的问题意识、人生经历、材料来源和判断方式。</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>连接优质资源</h3>
-            <p>后续接入大学课程、书籍、文章、视频和你的读书笔记。</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>慢慢形成自己的眼睛</h3>
-            <p>先借他人的眼睛看世界，再逐渐形成自己的理解路径。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="thinkers" class="section">
-        <div class="section-head row-head">
-          <div>
-            <h2>对社会有独到见解的智者</h2>
-          </div>
-          <a class="text-link" href="./thinkers.html">查看全部</a>
-        </div>
-
-        <div class="thinker-grid">
-          <a class="thinker-card active" href="./weber.html">
-            <div class="portrait" aria-label="韦伯肖像"><img src="./assets/portrait-weber.jpg" alt="韦伯肖像" loading="lazy" /></div>
-            <p>规则与组织</p>
-            <h3>韦伯</h3>
-            <span>理解现代组织、规则与服从</span>
-          </a>
-          <a class="thinker-card" href="./thinkers.html">
-            <div class="portrait" aria-label="布迪厄肖像"><img src="./assets/portrait-bourdieu.jpg" alt="布迪厄肖像" loading="lazy" /></div>
-            <p>品味与阶层</p>
-            <h3>布迪厄</h3>
-            <span>你的审美不是天生的，是你的阶层位置给你的</span>
-          </a>
-          <a class="thinker-card" href="./thinkers.html">
-            <div class="portrait" aria-label="戈夫曼肖像"><img src="./assets/portrait-goffman.jpg" alt="戈夫曼肖像" loading="lazy" /></div>
-            <p>自我与表演</p>
-            <h3>戈夫曼</h3>
-            <span>每个人都在演——前台后台，随时切换角色</span>
-          </a>
-          <a class="thinker-card" href="./thinkers.html">
-            <div class="portrait" aria-label="鲍曼肖像"><img src="./assets/portrait-bauman.jpg" alt="鲍曼肖像" loading="lazy" /></div>
-            <p>流动的现代性</p>
-            <h3>鲍曼</h3>
-            <span>一切都在流动，没有什么是稳固的——包括身份和关系</span>
-          </a>
-        </div>
+      <section class="home-glimpse" aria-label="最近写下">
+        <p class="index-mark">最近写下</p>
+        <a href="./random-walk-v2/thoughts.html"><time>2026.07.13</time><strong>从"理解社会"到"随机漫步"</strong><span>→</span></a>
       </section>
     </main>
-
-    <div style="max-width: min(var(--max), calc(100% - 36px)); margin: 0 auto; padding: 16px 0 4px; border-top: 1px solid var(--line);">
-      <p style="margin: 0; color: var(--muted); font-size: 12px; font-weight: 700; text-align: center;">变更记录</p>
-      <ul style="list-style: none; padding: 0; margin: 6px 0 0; color: var(--muted); font-size: 12px; text-align: center;">
-        <li style="display: inline; gap: 6px;"><span style="color: var(--accent); font-weight: 600;">2026-07-03</span> 首页智者区重构：移除费孝通、马克思、亚当·斯密，新增涂尔干、齐美尔、福柯（链接至智者图谱）；智者图谱改为 9 位智者卡片展示（4:5 竖版头像），每位置入唯一标签和反常识 tease；移除学习路径、主题导览、分类筛选。</li>
-          <li style="display: inline; gap: 6px; margin-top: 4px;"><span style="color: var(--accent); font-weight: 600;">2026-07-03</span> 韦伯页新增练习与出口引导；田野调查页新增 SKILL.md 技能包；新增「设计手记」板块（thinking.html）。全站导航同步更新。</li>
-      </ul>
-    </div>
-
-    <footer class="site-footer">
-      <p>借智者之眼，理解社会。</p>
-      <a href="#top">回到顶部</a>
-    </footer>
+    <footer>随机漫步的研究札记 · 一个仍在生长的个人学习现场</footer>
   </body>
 </html>

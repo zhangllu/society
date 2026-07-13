@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设计手记 | 借智者之眼</title>
+    <meta
+      name="description"
+      content="每个设计背后的思考——入口为什么这样选、页面为什么这样布局、功能为什么这样取舍。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .blog-list { display: grid; gap: 10px; }
+      .blog-card {
+        display: grid; grid-template-columns: 1fr auto;
+        gap: 20px; align-items: center;
+        padding: 22px 24px;
+        border-radius: 8px; background: var(--warm-bg);
+        transition: background 0.2s;
+        text-decoration: none; color: inherit;
+      }
+      .blog-card:hover { background: var(--accent-subtle); }
+      .blog-card .bc-tag {
+        color: var(--accent); font-size: 11px; font-weight: 700;
+        margin-bottom: 2px;
+      }
+      .blog-card .bc-title {
+        font-family: var(--font-serif); font-size: 22px; font-weight: 700;
+        margin: 0;
+      }
+      .blog-card .bc-desc {
+        margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7;
+      }
+      .blog-card .bc-meta {
+        margin-top: 8px; font-size: 12px; color: var(--muted);
+      }
+      .blog-card .bc-meta span { color: var(--accent); font-weight: 600; }
+      .blog-card .bc-arrow { color: var(--accent); font-size: 18px; font-weight: 300; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html">如何理解社会</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="./index.html">首页</a>
+        <a href="./index.html#thinkers">智者</a>
+        <a href="./knowledge.html">知识库</a>
+        <a href="./thinking.html" style="color: var(--accent);">设计手记</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" style="min-height: auto; padding-bottom: clamp(40px, 7vw, 78px);">
+        <div class="hero-copy">
+          <h1>设计手记</h1>
+          <p class="hero-lead">
+            每个设计背后都有一个判断。这里记录为什么这样做、不那样做，以及过程中的发现。
+          </p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0;">
+        <div class="section-head">
+          <p class="eyebrow">全部文章</p>
+        </div>
+
+        <div class="blog-list">
+          <a href="./thinking/人类框架-AI执行.html" class="blog-card">
+            <div>
+              <p class="bc-tag">设计方法</p>
+              <h3 class="bc-title">人类框架 + AI 执行：这个项目的设计方式</h3>
+              <p class="bc-desc">在 AI 时代，学习者和输出者的界限开始模糊。这个项目从一开始就建立了一种分工：人类定义怎么看，AI 负责看，人类判断看到了什么。</p>
+              <p class="bc-meta"><span>2026-07-03</span> · 阅读约 5 分钟</p>
+            </div>
+            <span class="bc-arrow">→</span>
+          </a>
+
+          <a href="./thinking/FDE能力框架审视.html" class="blog-card">
+            <div>
+              <p class="bc-tag">能力模型</p>
+              <h3 class="bc-title">用 FDE 能力框架审视这个项目</h3>
+              <p class="bc-desc">把 FDE 的 4C 模型、七步法、八维能力模型一一映射到这个项目，看看哪些已做到、哪些需要补、哪些必须有真实用户才能长出来。</p>
+              <p class="bc-meta"><span>2026-07-03</span> · 阅读约 6 分钟</p>
+            </div>
+            <span class="bc-arrow">→</span>
+          </a>
+
+          <article class="blog-card" style="cursor: default;">
+            <div>
+              <p class="bc-tag">信息架构</p>
+              <h3 class="bc-title">为什么前台不暴露后台分类</h3>
+              <p class="bc-desc">用户看到的是生活入口（规则与组织、金钱与机会），内部保留理论结构（政治博弈、社会交换）。这不是偷懒，是设计选择——让用户从自己的经验进入，而不是从学术名词开始。</p>
+              <p class="bc-meta"><span>即将发布</span></p>
+            </div>
+            <span class="bc-arrow" style="color: var(--line);">→</span>
+          </article>
+
+          <article class="blog-card" style="cursor: default;">
+            <div>
+              <p class="bc-tag">内容策略</p>
+              <h3 class="bc-title">六位智者为什么是他们</h3>
+              <p class="bc-desc">从马克思到卡尼曼，不是随机选的。他们的认知方式覆盖了从结构分析到行为实验的完整光谱，而且每一位都对应一个普通人能感受到的生活困惑。</p>
+              <p class="bc-meta"><span>即将发布</span></p>
+            </div>
+            <span class="bc-arrow" style="color: var(--line);">→</span>
+          </article>
+
+          <article class="blog-card" style="cursor: default;">
+            <div>
+              <p class="bc-tag">认知设计</p>
+              <h3 class="bc-title">智者详情页为什么是 10 段旅程</h3>
+              <p class="bc-desc">不做百科式的"生平+著作+影响"，而是从"这双眼睛从哪里来"开始，到"换一双眼睛"结束。每一段都在回答一个问题：用户为什么需要知道这个？</p>
+              <p class="bc-meta"><span>即将发布</span></p>
+            </div>
+            <span class="bc-arrow" style="color: var(--line);">→</span>
+          </article>
+
+          <article class="blog-card" style="cursor: default;">
+            <div>
+              <p class="bc-tag">交互设计</p>
+              <h3 class="bc-title">技能包为什么用 SKILL.md 格式</h3>
+              <p class="bc-desc">认知方式不只是"知识"，更应该是可执行的技能。SKILL.md 的格式（何时用→步骤→输出模板→检查清单）让用户读完就能动手试试。</p>
+              <p class="bc-meta"><span>即将发布</span></p>
+            </div>
+            <span class="bc-arrow" style="color: var(--line);">→</span>
+          </article>
+
+          <article class="blog-card" style="cursor: default;">
+            <div>
+              <p class="bc-tag">信息架构</p>
+              <h3 class="bc-title">四种组织知识的方式从哪来</h3>
+              <p class="bc-desc">头部结构、要素结构、步骤结构、复合结构——这个框架来自阳志平《聪明的阅读者》。用在知识库里，让每个模块都有一个清晰的内部逻辑。</p>
+              <p class="bc-meta"><span>即将发布</span></p>
+            </div>
+            <span class="bc-arrow" style="color: var(--line);">→</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div style="max-width: min(var(--max), calc(100% - 36px)); margin: 0 auto; padding: 16px 0 4px; border-top: 1px solid var(--line);">
+      <p style="margin: 0; color: var(--muted); font-size: 12px; font-weight: 700; text-align: center;">变更记录</p>
+      <ul style="list-style: none; padding: 0; margin: 6px 0 0; color: var(--muted); font-size: 12px; text-align: center;">
+        <li style="display: inline; gap: 6px;"><span style="color: var(--accent); font-weight: 600;">2026-07-03</span> 设计手记上线。首篇发布：「人类框架 + AI 执行——这个项目的设计方式」。第二篇发布：「用 FDE 能力框架审视这个项目」。</li>
+      </ul>
+    </div>
+
+    <footer class="site-footer">
+      <p>借智者之眼，理解社会。</p>
+      <a href="./index.html">回到首页</a>
+    </footer>
+  </body>
+</html>

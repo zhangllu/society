@@ -8,6 +8,14 @@
 /*.records.json
 /519PiFrVUfL._AC_UF894,1000_QL80_.jpg
 
+# 存档旧页面
+/archive/
+
+# 旧版站点资源（已由 random-walk-v2/ 替代，不再引用）
+/styles.css
+/script.js
+/assets/
+
 # 本地工具状态
 .vercel/
 .git/
