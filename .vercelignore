@@ -11,10 +11,8 @@
 # 存档旧页面
 /archive/
 
-# 旧版站点资源（已由 random-walk-v2/ 替代，不再引用）
-/styles.css
-/script.js
-/assets/
+# latour.html 仍引用根级样式和头像资源
+# /styles.css 和 /assets/ 保留部署
 
 # 本地工具状态
 .vercel/
