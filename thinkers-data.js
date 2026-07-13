@@ -633,13 +633,13 @@ const thinkers = [
   {
     id: "latour", name: "拉图尔", nameEn: "Bruno Latour",
     lifespan: "1947–2022", era: "当代", region: "西方",
-    fields: ["社会学", "STS"], cognitiveWays: ["田野调查"],
-    oneLine: "科学是在实验室里「被制造」的——事实不是发现的，是建构的",
-    coreContribution: "创立行动者网络理论，揭示科学知识如何在实验室中被社会性地建构",
-    concepts: ["行动者网络理论", "实验室研究", "现代性反思"],
+    fields: ["社会学", "STS"], cognitiveWays: ["从现场追踪关联、转译与稳定化"],
+    oneLine: "从实验室出发，追踪事实、技术和秩序如何在人的与非人的连接中稳定下来",
+    coreContribution: "与合作者发展行动者网络理论，重新描述科学、技术、现代性与生态政治中的关系形成",
+    concepts: ["行动者网络", "转译", "纯化与杂合"],
     works: ["《实验室生活》", "《我们从未现代过》"],
     related: [{id: "kuhn", label: "科学知识建构"}, {id: "foucault", label: "知识权力"}],
-    hasDetail: false, hasEntry: false,
+    hasDetail: true, detailPage: "latour.html", hasEntry: true,
     tags: ["科学建构", "网络理论", "现代性"],
     collectionTags: ["niche"]
   },
