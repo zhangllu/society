@@ -1,0 +1,14 @@
+# 本地阅读材料与原始附件不参与 Vercel 构建
+/社会学电子书/
+/聪明的阅读者/
+/skills/
+/*.md
+/*.pdf
+/*.txt
+/*.records.json
+/519PiFrVUfL._AC_UF894,1000_QL80_.jpg
+
+# 本地工具状态
+.vercel/
+.git/
+.DS_Store
