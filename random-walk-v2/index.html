@@ -7,10 +7,10 @@
     <meta name="description" content="把正在想的、正在读的和想回去查的，留在这里。" />
     <link rel="stylesheet" href="./styles.css" />
     <style>
-      .paper-index { min-height: min(650px, calc(100vh - 76px)); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: end; gap: clamp(44px, 10vw, 150px); padding: clamp(92px, 12vw, 155px) 0 clamp(70px, 8vw, 110px); border-bottom: 1px solid var(--line); }
+      .paper-index { min-height: min(590px, calc(100vh - 76px)); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: center; gap: clamp(44px, 10vw, 150px); padding: clamp(88px, 10vw, 132px) 0; border-bottom: 1px solid var(--line); }
       .paper-copy { max-width: 710px; }
-      .paper-copy h1 { margin: 0; font: 500 clamp(50px, 6vw, 80px)/1.18 var(--serif); letter-spacing: -.052em; }
-      .paper-copy > p:last-child { max-width: 530px; margin: 28px 0 0; color: var(--muted); font-size: 16px; }
+      .paper-copy h1 { margin: 0; color: #1b4942; font: 400 clamp(32px, 3.3vw, 46px)/1.55 var(--serif); letter-spacing: .018em; }
+      .paper-copy h1 span { display: block; }
       .paper-entries { width: 100%; border-top: 1px solid var(--line); }
       .paper-entries a { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; min-height: 72px; gap: 10px; border-bottom: 1px solid var(--line); transition: padding-left .18s, color .18s, border-color .18s; }
       .paper-entries span { color: var(--accent); font-size: 12px; font-weight: 750; }
@@ -23,7 +23,7 @@
       .home-glimpse time { color: var(--muted); font-size: 13px; }
       .home-glimpse strong { font: 500 19px/1.35 var(--serif); }
       .home-glimpse span { color: var(--accent); }
-      @media (max-width: 700px) { .paper-index { display: block; min-height: 0; padding: 78px 0 70px; } .paper-copy h1 { font-size: 49px; } .paper-copy > p:last-child { margin-top: 24px; } .paper-entries { margin-top: 52px; } .paper-entries a { min-height: 64px; } .home-glimpse { padding: 28px 0 56px; } .home-glimpse a { grid-template-columns: 1fr auto; gap: 8px; } .home-glimpse time { grid-column: 1 / -1; } }
+      @media (max-width: 700px) { .paper-index { display: block; min-height: 0; padding: 78px 0 70px; } .paper-copy h1 { font-size: 32px; line-height: 1.62; } .paper-entries { margin-top: 52px; } .paper-entries a { min-height: 64px; } .home-glimpse { padding: 28px 0 56px; } .home-glimpse a { grid-template-columns: 1fr auto; gap: 8px; } .home-glimpse time { grid-column: 1 / -1; } }
     </style>
   </head>
   <body>
@@ -34,9 +34,7 @@
     <main>
       <section class="paper-index">
         <div class="paper-copy">
-        <p class="index-mark">RESEARCH NOTES / 001</p>
-        <h1>把正在想的、正在读的，<br />留成可以继续走进去的路。</h1>
-        <p>这是一个为我自己的阅读、思考与 coding 留下的工作台。它不按学科展开，而从此刻真实的兴趣、人物和材料开始。</p>
+        <h1><span>把正在想的、正在读的，</span><span>留成可以继续走进去的路。</span></h1>
         </div>
         <nav class="paper-entries" aria-label="三个入口">
           <a href="./thoughts.html"><span>01</span><strong>近期思考</strong><em>→</em></a>
