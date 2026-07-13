@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>近期思考｜随机漫步的研究札记</title>
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .thoughts-page { padding-top: 38px; }
+      .thoughts-page .editor-actions .index-mark { margin: 0 auto 0 0; }
+      .thoughts-page .editor-actions small { margin-left: 12px; }
+      @media (max-width: 700px) {
+        .thoughts-page { padding-top: 26px; }
+        .thoughts-page .editor-actions .index-mark { width: 100%; margin-bottom: 2px; }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header"><a class="brand" href="./index.html">随机漫步的研究札记</a><nav aria-label="主导航"><a class="active" href="./thoughts.html">近期思考</a><a href="./thinkers.html">智者</a><a href="./resources.html">相关链接</a></nav></header>
-    <main class="page">
-      <section class="page-head"><p class="index-mark">01 / WORKING NOTE</p><h1>近期思考</h1><p>这是一份属于自己的工作稿。编辑内容会暂存在此浏览器；下载 Markdown 后，可手动替换网站中的源文件。</p></section>
-      <div class="editor-actions"><button id="previewButton" type="button">预览</button><button id="editButton" type="button" class="quiet">继续编辑</button><button id="downloadButton" type="button" class="dark">下载 .md</button><small id="saveState">正在载入默认 Markdown…</small></div>
+    <main class="page thoughts-page">
+      <div class="editor-actions"><p class="index-mark">近期思考</p><button id="previewButton" type="button">预览</button><button id="editButton" type="button" class="quiet">编辑</button><button id="downloadButton" type="button" class="dark">下载 .md</button><small id="saveState">正在载入…</small></div>
       <section class="markdown-workspace">
         <textarea id="markdownEditor" aria-label="近期思考 Markdown 编辑器"></textarea>
         <article id="markdownPreview" class="markdown-preview" aria-live="polite"></article>
